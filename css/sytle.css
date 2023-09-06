@@ -1,0 +1,87 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+    background-color: beige;
+            
+}
+
+.header{
+    background-image: url('../image/makima.jpg');
+    color: white;
+    margin: 0;
+    text-align: center;
+    padding: 80px;
+    position: absolute;
+    width: 88.3%;
+}
+h1, h3,h4,p{
+    margin: 0;
+    padding-left: 10px;
+}
+h4{
+    margin-bottom: 20px;
+}
+p{
+    margin-top: 10px;
+    font-weight: lighter;
+}
+.isian{
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+    background-color:white;
+    color: black;
+    display: flex;
+    width: 40%;
+    padding-left: 10px;
+    margin: auto;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    align-items: center;
+
+}
+
+.img-x, .img-email, .img-wa{
+
+    padding-right: 5px;
+}
+
+.foto{
+    width: 150px;
+    padding-right: 39px;
+}
+
+.propile{
+    text-align: center;
+    font-size: 12px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+    background-color:white;
+    color: black;
+    width: 40%;
+    padding-left: 10px;
+    margin: auto;
+    position: absolute;
+    top: 65%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    align-items: center;
+    padding-bottom: 5px;
+    
+}
+button{
+    padding: 9px;
+    background-color: brown;
+    border: none;
+    color: white;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 8px;
+    transition-duration: 0.4s;
+}
+
+button:hover {
+    background-color: rgb(101, 35, 35); /* Green */
+    color: white;
+  }
