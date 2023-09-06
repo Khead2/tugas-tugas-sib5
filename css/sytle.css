@@ -20,12 +20,13 @@ h1, h3,h4,p{
     margin: 0;
     padding-left: 10px;
 }
-h4{
+.umur {
     margin-bottom: 20px;
 }
 p{
     margin-top: 10px;
     font-weight: lighter;
+    font-size: 15px;
 }
 .isian{
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
@@ -43,7 +44,7 @@ p{
 
 }
 
-.img-x, .img-email, .img-wa{
+.img-x, .img-email, .img-wa, .gender{
 
     padding-right: 5px;
 }
@@ -63,7 +64,7 @@ p{
     padding-left: 10px;
     margin: auto;
     position: absolute;
-    top: 65%;
+    top: 70%;
     left: 50%;
     transform: translate(-50%, -50%);
     align-items: center;
@@ -78,7 +79,7 @@ button{
     text-align: center;
     cursor: pointer;
     border-radius: 8px;
-    transition-duration: 0.4s;
+    transition-duration: 0.3s;
 }
 
 button:hover {
