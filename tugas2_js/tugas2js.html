@@ -1,0 +1,40 @@
+
+<script>
+    let pegawai ="Ridwan";
+    let jabatan ="menager";
+    let status = "menikah";
+    let gaji_pok = 0;
+
+    //proses gaji pokok
+    
+    if(jabatan == "menager"){
+        gaji_pok=15000000;
+    }else if(jabatan == "Asisten Manager"){
+        gaji_pok=10000000;
+    }else if(jabatan == "Staff"){
+        gaji_pok = 5000000;
+    }else {
+        gaji_pok = 0;
+    }
+
+    let tunjangan_jab = 0.15 * gaji_pok;
+    let BPJS = 0.10 * gaji_pok;
+    let tunjangan_kel = (status == "menikah") ? 0.20 * gaji_pok : 0;
+
+    //proses total
+    let gatot = gaji_pok + tunjangan_jab + BPJS + tunjangan_kel;
+
+    //proses cetak 
+    document.write("<h1> Data Pegawai</h1>");
+    document.write("<br> Nama Pegawai : "+pegawai+
+                    "<br> Jabatan : "+ jabatan+
+                    "<br> Status : "+ status+
+                    "<br> Gaji Pokok : Rp. "+gaji_pok+
+                    "<br> Tunjangan Jabatan : Rp. "+tunjangan_jab+
+                    "<br> BPJS : Rp. "+BPJS+
+                    "<br> Tunjangan Keluarga : Rp. "+tunjangan_kel+
+                    "<br> Total Gaji : Rp. " +gatot+
+                    "<hr>");
+    </script>
+   
+
