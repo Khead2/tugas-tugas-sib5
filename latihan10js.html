@@ -1,0 +1,26 @@
+<script>
+    //membuat array sederhana
+    var buah = ['pepaya','mangga','pisang','jambu'];
+    //upadate data 2 pada array
+    buah[2] = 'jeruk';
+    for(var i = 0; i<buah.length; i++){
+        document.write("<br>"+buah[i]);
+    }
+</script>
+<script>
+    //array object atau array dalam array / array
+    let p1 = {'nama' : 'budi','divis' : 'SDM', 'gaji': 7000000};
+    let p2 = {'nama' : 'andri','divis' : 'HRD', 'gaji': 8000000};
+    let p3 = {'nama' : 'ari','divis' : 'Menager', 'gaji': 9000000};
+
+    let pegawai =[p1,p2,p3];
+    for (let i =0; i < pegawai.length; i++){
+        document.write(pegawai[i])
+    }
+
+    for (p of pegawai){
+        document.writeln("<br>"+p.nama);
+        document.writeln(p.divis);
+        document.writeln(p.gaji);
+    }
+</script>

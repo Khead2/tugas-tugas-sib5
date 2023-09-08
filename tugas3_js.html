@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table{
+            border-collapse: collapse;
+            padding: 10;
+            text-align: center;
+            width: 100%;
+        }
+        thead{
+            background-color: darkgrey;
+        }
+        tr, th, td{
+            border: 1px solid black;
+        }
+        
+    </style>
+</head>
+<body>
+    <table>
+        <h1>Tugas 3 js</h1>
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>Nama</th>
+                <th>Jabatan</th>
+                <th>Gaji Pokok</th>
+                <th>Agama</th>
+                <th>Tunjangan Jabatan</th>
+                <th>Tunjangan Kesehatan</th>
+                <th>Gaji Kotor</th>
+                <th>Zakat</th>
+                <th>Take Home Pay</th>
+            </tr>
+        </thead>
+        <tbody>
+            <script>
+
+                let p1= {"nama" : "Pegawai1"}
+                let p2= {"nama" : "Pegawai2"}
+                let p3= {"nama" : "Pegawai3"}
+                let p4= {"nama" : "Pegawai4"}
+                let p5= {"nama" : "Pegawai5"}
+                let p6= {"nama" : "Pegawai6"}
+                let p7= {"nama" : "Pegawai7"}
+                let p8= {"nama" : "Pegawai8"}
+                let p9= {"nama" : "Pegawai9"}
+                let p10= {"nama" : "Pegawai10"}
+                let pegawai = [p1,p2,p3,p4,p5,p6,p7,p8,p9,p10];
+
+                let Jabatan = " ";
+                let gapok = 0;
+
+                var no = 1;
+                for(p of pegawai){
+                    if(p.nama == "Pegawai1" || p.nama == "Pegawai2"){
+                        Jabatan = "menager";
+                    }else if (p.nama == "Pegawai3" || p.nama == "Pegawai4" || p.nama == "Pegawai5" ) {
+                        Jabatan = "Asisten menager";
+                    }else if (p.nama == "Pegawai6" || p.nama == "Pegawai7" || p.nama == "Pegawai8") {
+                        Jabatan = "Supervisior";
+                    }else if (p.nama == "Pegawai9" || p.nama == "Pegawai10") {
+                        Jabatan = "Staff";
+                    }else {
+                        Jabatan = " ";
+                    }
+
+                switch (Jabatan) {
+                    case "menager":
+                        gapok = 15000000;
+                        break;
+                    case "Asisten menager":
+                        gapok = 10000000;
+                        break;
+                    case "Supervisior":
+                        gapok = 7000000;
+                        break;
+                    case "Staff":
+                        gapok = 5000000;
+                        break;
+                    default:
+                        gapok = 0;
+                        break;
+                }
+                var agama, warna;
+                agama = (no % 2==0) ? 'Non Muslim' : 'Muslim';
+                warna = (no % 2==0) ? 'blue' : 'yellow';
+
+                let tunjangan_jab = 0.20 * gapok;
+                let tunjangan_kes = 0.10 * gapok;
+                let gaji_kotor = gapok + tunjangan_jab + tunjangan_kes;
+                
+                let zakat = 0;
+                if(agama == "Muslim") zakat = (2.4/100) * gapok;
+                else zakat = 0;
+
+                let take_hompay = gaji_kotor - zakat;
+                var font;
+                font = (no % 2==0) ? '#F6F4EB' : 'black';
+                document.write(`<tr bgcolor="${warna}"  style="color: ${font};">
+                                <td>${no++}</td>
+                                <td>${p.nama}</td>
+                                <td>${Jabatan}</td>
+                                <td>${gapok}</td>
+                                <td>${agama}</td>
+                                <td>${tunjangan_jab}</td>
+                                <td>${tunjangan_kes}</td>
+                                <td>${gaji_kotor}</td>
+                                <td>${zakat}</td>
+                                <td>${take_hompay}</td>
+                            `);
+                }
+
+            </script>
+        </tbody>
+    </table>
+
+</body>
+</html>
