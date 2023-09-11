@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tugas 4 js</title>
+    <style>
+        tr, td, th{
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <form id="frm">
+        <label for="">Nama</label>
+        <br>
+        <input type="text" name="nama" placeholder="Masukan Nama Anda">
+        <br>
+        <label for="">Produk</label>
+        <br>
+        <select name="produk" id="">
+            <option value="TV">TV</option>
+            <option value="AC">AC</option>
+            <option value="Kulkas">Kulkas</option>
+        </select>
+        <br>
+        <label for="">Jumlah</label>
+        <br>
+        <input type="text" name="jumlah" placeholder="Masukan Jumlah Barang yang anda beli">
+        <br>
+        <input type="button" name="proses" value="Beli" onclick="prosesBarang()">
+    </form>
+    <br>
+
+    <table style="border-collapse: collapse; width: 50%; text-align: center;">
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>Nama Barang</th>
+                <Th>Harga Satuan</Th>
+            </tr>
+           
+        </thead>
+        <tbody>
+            <script>
+                 let p1= {"nama" : "AC", "Harga" : "300,000,000"}
+        let p2= {"nama" : "TV", "Harga" : "200,000,000"}
+        let p3= {"nama" : "Kulakas", "Harga" : "400,000,000"}
+
+        let list_barang=[p1,p2,p3];
+
+        var no= 1;
+        for (l of list_barang){
+            document.write(`<tr>
+                    <td>${no++}</td>
+                    <td>${l.nama}</td>
+                    <td>${l.Harga}</td>
+                    `);
+        }
+            </script>
+        </tbody>
+    </table>
+    <script>
+       
+        function prosesBarang() {
+            let form = document.getElementById('frm');
+            let Pembeli = form.nama.value;
+            let Barang = form.produk.value;
+            let banyakBarang = form.jumlah.value;
+            let Price = 0;
+            switch (Barang) {
+                case "TV":
+                    Price = 2000000;
+                    break;
+                case "AC":
+                    Price = 3000000;
+                    break;
+                case "Kulkas":
+                    Price = 4000000;
+                    break;
+                default:
+                    Price = 0;
+                    break;
+            }
+            let harga_Kot = Price * banyakBarang;
+            let diskon  = 0;
+            if (Barang == "Kulkas" && banyakBarang >= 3) {
+                diskon = (30/100)*harga_Kot;
+            }else if (Barang == "AC" && banyakBarang >= 3){
+                diskon = (20/100)*harga_Kot;
+            }else{
+                diskon = (10/100)*harga_Kot;
+            }
+            let PPN =diskon - (0.1*harga_Kot);
+            let harga_bayar = (harga_Kot - diskon) + PPN;
+
+           alert(`Nama : ${Pembeli} \nProduk : ${Barang} \nJumlah : ${banyakBarang} \nHarga : ${Price}\nHarga Kotor: ${harga_Kot}\nDiskon : ${diskon}\nPPN : ${PPN}\nHarga Bayar : ${harga_bayar}
+                         `);
+        }
+    </script>
+</body>
+</html>
