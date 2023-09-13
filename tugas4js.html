@@ -19,9 +19,9 @@
         <label for="">Produk</label>
         <br>
         <select name="produk" id="">
-            <option value="TV">TV</option>
+            <!-- <option value="TV">TV</option>
             <option value="AC">AC</option>
-            <option value="Kulkas">Kulkas</option>
+            <option value="Kulkas">Kulkas</option> -->
         </select>
         <br>
         <label for="">Jumlah</label>
@@ -62,7 +62,15 @@
         </tbody>
     </table>
     <script>
-       
+        let frm = document.getElementById("frm");
+        let Barang = ["TV", "AC", "Kulkas"];
+        let pilihBarang = `<option value =" "> Pilih Produk</option>`;
+        for (let p in Barang){
+                pilihBarang += `<option value = "${Barang[p]}">${Barang[p]}</option>`;
+        }
+        
+        frm.produk.innerHTML = pilihBarang;
+        
         function prosesBarang() {
             let form = document.getElementById('frm');
             let Pembeli = form.nama.value;
