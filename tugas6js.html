@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tugas jquery</title>
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <style>
+        
+        button{
+            width: 100px;
+            padding: 5px;
+            font-size: 12px;
+            
+        }
+
+        #hasil{
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Tugas jquery</h2>
+
+    <p>Klik salah satu button di bawah</p>
+
+    <button id="button1">Profile </button>
+    <button id="button2">Moto Hidup</button>
+    <button id="button3">Keahlian</button>
+
+    <p id="hasil">.....</p>
+  
+
+    <script>
+        $("document").ready(function(){
+            var name = "Hanan Abdul Ghani";
+            var alamat = "Indonesia, jawa tengah, banyumas";
+            var golDar = "O";
+            $("#button1").on("click", function(){
+                $("#hasil").html(`Nama : ${name} 
+                <br>Golongan darah : ${golDar}
+                            <br>Alamat : ${alamat} 
+                            
+                            <br><iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3326.532430707797!2d109.29297115376762!3d-7.472316191791904!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zN8KwMjgnMjQuNSJTIDEwOcKwMTcnNDQuMSJF!5e0!3m2!1sid!2sid!4v1695030795654!5m2!1sid!2sid" width="400" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    `);
+            });
+            $("#button2").on("click", function(){
+                $("#hasil").html(`Moto Hidup saya, Baca rekam posting
+                                <br>
+                                <img src="https://awsimages.detik.net.id/community/media/visual/2023/05/27/meme-aldi-taher-5_11.jpeg?w=200&q=80">
+                
+                `);
+            });
+            $("#button3").on("click", function(){
+                $("#hasil").text("Keahlian Saya insyallah dalam bidang web developer");
+            });
+
+            $("button").on("dblclick", function(){
+                $("#hasil").text(".....")
+            })
+        });
+    </script>
+</body>
+</html>
