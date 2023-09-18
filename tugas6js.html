@@ -17,6 +17,8 @@
         #hasil{
             font-size: 30px;
         }
+
+    
     </style>
 </head>
 <body>
@@ -28,9 +30,11 @@
     <button id="button1">Profile </button>
     <button id="button2">Moto Hidup</button>
     <button id="button3">Keahlian</button>
+    <button id="button4"> Reset </button>
 
     <p id="hasil">.....</p>
   
+    <img src="" alt="" width="">
 
     <script>
         $("document").ready(function(){
@@ -38,11 +42,10 @@
             var alamat = "Indonesia, jawa tengah, banyumas";
             var golDar = "O";
             $("#button1").on("click", function(){
-                $("#hasil").html(`Nama : ${name} 
-                <br>Golongan darah : ${golDar}
+                $("#hasil").html(`<img src ="image/fotoHanan.jpg" width = "150px">
+                            <br>Nama : ${name} 
+                            <br>Golongan darah : ${golDar}
                             <br>Alamat : ${alamat} 
-                            
-                            <br><iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3326.532430707797!2d109.29297115376762!3d-7.472316191791904!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zN8KwMjgnMjQuNSJTIDEwOcKwMTcnNDQuMSJF!5e0!3m2!1sid!2sid!4v1695030795654!5m2!1sid!2sid" width="400" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     `);
             });
             $("#button2").on("click", function(){
@@ -56,7 +59,7 @@
                 $("#hasil").text("Keahlian Saya insyallah dalam bidang web developer");
             });
 
-            $("button").on("dblclick", function(){
+            $("#button4").on("click", function(){
                 $("#hasil").text(".....")
             })
         });
