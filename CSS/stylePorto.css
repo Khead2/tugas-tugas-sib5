@@ -1,0 +1,34 @@
+.jumbotron {
+  padding-top: 100px;
+  background-color: #cedebd;
+}
+
+.navbar {
+  background-color: #435334;
+}
+
+#projek {
+  padding-top: 50px;
+
+  background-color: #cedebd;
+}
+
+.path {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+#svg1,
+#svg2,
+#svg3,
+#svg4 {
+  width: 40%;
+}
+
+#fotter {
+  background-color: #435334;
+}
+
+#tentang,
+#projek {
+  padding-top: 5rem;
+}
