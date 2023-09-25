@@ -7,7 +7,7 @@ $a5 = ['kode' => '0015','buah'=>'Durian','harga' => 45000, 'jumlah' => 8];
 $a6 = ['kode' => '0016','buah'=>'Salak','harga' => 55000, 'jumlah' => 9];
 $a7 = ['kode' => '0017','buah'=>'Nanas','harga' => 65000, 'jumlah' => 10];
 
-$ar_buah = [$a1,$a2,$a3,$a3,$a4,$a5,$a6,$a7];
+$ar_buah = [$a1,$a2,$a3,$a4,$a5,$a6,$a7];
 
 $ar_judul = ['No', 'Kode', 'Buah','Harga','Jumlah', 'Harga kotor','Diskon','Harga Bayar'];
 
@@ -22,7 +22,7 @@ $keterangan = [
     'Harga tertinggi ' =>$har_tertinggi,
     'Harga terendah ' => $harga_terendah,
     'Harga Rata rata ' => $harga_rata_rata,
-    'Jumlag Buah' => $jumlah_transaksi,
+    'Jumlah Buah' => $jumlah_transaksi,
 ]
 
 ?>
@@ -40,7 +40,7 @@ $keterangan = [
     <table border="1" cellpadding ="10" cellspacing ="2" width ="100%">
         <thead>
             <tr>
-                <?php $no =1;
+                <?php
                 foreach($ar_judul as $judul){
                     
 
