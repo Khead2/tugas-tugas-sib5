@@ -1,0 +1,23 @@
+//masuk ke keruangn DB melalui CMD
+mysql -u root -p
+
+//menampilkan database
+show databases;
+
+//membuat database dbpegawai
+create database dbpegawai;
+
+//masuk keruang database dbpegawai
+USE dbpegwai;
+
+//menampilkan table yang sudah ada di dbpegawai
+show tables;
+
+//membuat table baru dengan nama pegawai
+create table pegawai (id int primary key, nip char(5) NOT NULL UNIQUE, nama varchar(30) NOT NULL, gender enum('L','P') NOT NULL, umur int NOT NULL, berat_badan float);
+
+//menampilkan database yang sudah di buat
+show databases;
+
+//melihat deskripsi pada tabel pegawai
+desc pegwai;

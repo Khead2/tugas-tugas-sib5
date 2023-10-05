@@ -1,2 +1,26 @@
 //melihat seluruh database
-    
+SHOW DATABASE;
+
+CREATE DATABASE tokosib5;
+
+CREATE TABLE janis(
+    id int PRIMARY KEY AUTO_INCREMENT,
+    nma varchar(30) NOT NULL unique;
+)
+
+//untuk melihat detail TABLE
+DESC jenis;
+
+//membuat table produk
+CREATE TABLE produk (
+    id int PRIMARY KEY AUTO_INCREMENT,
+    nama varchar(30) NOT NULL UNIQUE,
+    harga double NOT NULL,
+    stok int NOT NULL,
+    idjenis int NOT NULL REFERENCES jenis(id),
+    foto varchar(30));
+
+
+    ALTER TABLE jenis CHANGE keterangan ket varchar(50);
+
+    ALTER TABLE jenis MODIFY ket TEXT AFTER nama;
