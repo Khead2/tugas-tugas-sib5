@@ -1,0 +1,38 @@
+//masuk pada database tokosib5
+USE tokosib5;
+
+//membuat table pembelian yang references dengan table produk
+CREATE TABLE pembelian (
+    -> tanggal date NOT NULL,
+    -> nomor int PRIMARY KEY AUTO_INCREMENT,
+    -> produk_id int NOT NULL REFERENCES produk(id),
+    -> jumlah int NOT NULL,
+    -> vendor_id int NOT NULL);
+
+//melihat descripsi table pembelian
+desc pembelian;
+
+//membuat table vendor yang references dengan table pembelian
+CREATE TABLE vendor (
+    -> nomor int PRIMARY KEY NOT NULL REFERENCES pembelian(vendor_id),
+    -> nama varchar(30) NOT NULL,
+    -> kota varchar(30) NOT NULL,
+    -> kontak int NOT NULL);
+
+//melihat descripsi table vendor
+DESC vendor;
+
+//memasukan data pada table pembelian
+INSERT INTO pembelian (tanggal, nomor, produk_id, jumlah, vendor_id) Values ('2023-10-7','',1,3,1), ('2023-10-3','',3, 10, 2);
+
+//melihat data pada table pembelian
+SELECT * FROM pembelian;
+
+//memasukan data pada table vendor
+ INSERT INTO vendor
+    -> (nomor, nama, kota, kontak) VALUE
+    -> (1, 'PT.Mencari Cinta Sejati', 'Bandung', 0812345678),
+    -> (2, 'SAMSUL STORE', 'Jakarta', 085320313071);
+
+//melihat data pada teble vendor
+SELECT * FROM vendor;
