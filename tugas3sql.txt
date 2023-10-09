@@ -1,0 +1,78 @@
+//memasukan 6 data pada table pelanggan
+INSERT INTO `pelanggan` (`id`, `kode`, `nama`, `jk`, `tmp_lahir`, `tgl_lahir`, `email`, `kartu_id`) VALUES 
+(NULL, 'C005', 'Hanan abdul ghani', 'L', 'Bandung', '2002-05-24', 'ha149366@gmail.com', '2'), 
+(NULL, 'C006', 'Ratih anggraeni', 'P', 'Kroya', '2004-10-13', 'ratih@gmail.com', '1'), 
+(NULL, 'C007', 'Sabita salsabila', 'P', 'Purbalingga', '2002-09-16', 'sabita@gmail.com', '2'), 
+(NULL, 'C008', 'Farhan fdhilah', 'L', 'Bumiayu', '2004-10-22', 'farhan@gmail.com', '4'), 
+(NULL, 'C009', 'Rangga Cahya Wisnu Pradana', 'L', 'Banyumas', '2001-12-12', 'rangga@gmail.com', '3'), 
+(NULL, 'C010', 'Irvan Aji Priatno', 'L', 'Banyumas', '2002-08-15', 'aji@gmail.com', '4');
+
+//memasukan 5 data pada data produk
+INSERT INTO `produk` (`id`, `kode`, `nama`, `harga_beli`, `harga_jual`, `stok`, `min_stok`, `jenis_produk_id`) VALUES 
+(NULL, 'HP01', 'Ipone 14 pro max bgt', '7000000', '8000000', '6', '2', '1'), 
+(NULL, 'LP01', 'Acer aspire jadul 213', '7500000', '8500000', '3', '2', '1'), 
+(NULL, 'HP02', 'Redmi Note 9 ', '2300000', '3000000', '8', '2', '1'), 
+(NULL, 'NS01', 'Nasi Gorang Spesial', '15000', '20000', '17', '2', '4'), 
+(NULL, 'BJ01', 'Baju PDIP', '100000', '150000', '89', '2', '3');
+
+//menyesaikan worksheet 1
+
+//membuat table pesanan_items
+create table pesanan_items (
+    -> id int not null auto_increment primary key,
+    -> produk_id int not null references prduk(id),
+    -> pesanan_id int not null references pesanan(id),
+    -> Qty int,
+    -> harga double);
+
+//membuat table vendor
+ create table vendor(
+    -> id int not null auto_increment primary key,
+    -> nomor varchar(4) not null,
+    -> nama varchar(40) not null,
+    -> kota varchar(30) not null,
+    -> kontak varchar(30) not null);
+
+//membuat table pembelian
+create table pembelian (
+    -> id int not null auto_increment primary key,
+    -> tanggal date,
+    -> nomor varchar(10) NOT NULL,
+    -> produk_id int not null references produk(id),
+    -> jumlah int,
+    -> harga double,
+    -> vendor_id int not null references vendor(id));
+
+//menyesaikan worksheet 2
+
+1. Menampilkan produk yang kode awalnya bukan huruf M
+select * from produk where kode not like 'M%';
+
+2. menampilkan produk-produk televisi
+select * from produk where kode like 'TV%';
+
+3. Tampilkan pelanggan mengandung huruf 'SA'
+select * from pelanggan where nama like '%SA%';
+
+4. Tampilkan pelanggan yang lahirnya bukan di Jakarta dan mengandung huruf ‘yo‘
+select * from pelanggan where tmp_lahir = 'Jakarta' AND nama like '%yo%';
+
+5. Tampilkan pelanggan yang karakter huruf ke – 2 nya adalah A
+select * from pelanggan where nama like '_a%';
+
+
+
+1. Tampilkan produk yang paling murah
+ SELECT *FROM produk ORDER BY harga_beli ASC;
+
+2. Tampilkan produk yang stoknya paling banyak
+  SELECT *FROM produk order by stok desc limit 1;
+
+3. Tampilkan dua produk yang stoknya paling sedikit
+SELECT *FROM produk order by stok asc limit 1;
+
+4. Tampilkan pelanggan yang paling muda
+select * from pelanggan order by tgl_lahir desc limit 1;
+
+5. Tampilkan pelanggan yang paling tua
+select * from pelanggan order by tgl_lahir asc limit 1;
