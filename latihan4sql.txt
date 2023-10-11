@@ -1,0 +1,20 @@
+//subquery untuk menampilkan stok terbesar saja
+select * from produk where stok = (select max(stok) from produk);
+
+///subquery untuk menampilkan stok terkecil saja
+select * from produk where stok = (select min(stok) from produk);
+
+//subquery untuk menampilkan stok ratarata saja
+select * from produk where stok = (select avg(stok) from produk);
+
+//query distinct 
+select distinct harga_jual from produk;
+select distinct stok from produk;
+
+
+//case pada sql 
+select nama, harga_jual, stok,
+    -> case
+    -> when stok >= 5 then 'CUKUP'
+    -> else 'KURANG'
+    -> end as keterangan from produk;
