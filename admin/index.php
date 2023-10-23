@@ -1,6 +1,11 @@
 <?php
+include_once 'koneksi.php';
+include_once 'models/Jenis_produk.php';
+include_once 'models/Kartu.php';
+include_once 'models/Produk.php';
 include_once 'top.php';
 include_once 'menu.php';
+
 
 
 ?>
@@ -14,22 +19,14 @@ include_once 'menu.php';
         <?php
 
         error_reporting(0);
-        $url = $_GET['url'];
-        if($url == 'dashboard.php'){
-            include_once 'dashboard.php';
-        }elseif ($url == 'About.php'){
-            include_once 'About.php';
-        }
-        elseif ($url == 'Contact.php'){
-            include_once 'Contact.php';
-        }elseif ($url == 'DataTable.php'){
-            include_once 'DataTable.php';
-        }
-        elseif (!empty($url)) {
-            include_once ''.$url.'.php';
-        }else {
-            'dashboard.php';
-        }
+        $url = !isset($_GET['url']) ? 'dashboard' : $_GET['url'];
+    if($url == 'dashboard'){
+        include_once 'dashboard.php';
+    } else if(!empty($url)){
+        include_once ''.$url.'.php';
+    } else {
+       include_once 'dashboard.php';
+    }
         ?>
     </div>
 </div>
