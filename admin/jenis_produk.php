@@ -32,6 +32,7 @@ $data_jenisProduk = $model->datajenis();
                                         <tr>
                                             <th>No</th>
                                             <th>Nama Jenis Produk</th>
+                                            <th>Aksi</th>
                                             
                                         </tr>
                                     </thead>
@@ -39,6 +40,7 @@ $data_jenisProduk = $model->datajenis();
                                         <tr>
                                             <th>No</th>
                                             <th>Nama Jenis Produk</th>
+                                            <th>Aksi</th>
                                            
                                         </tr>
                                     </tfoot>
@@ -51,6 +53,13 @@ $data_jenisProduk = $model->datajenis();
                                         <tr>
                                             <td><?= $no ?></td>
                                             <td><?= $row['nama']?></td>
+                                            <td>
+                                                <form action="">
+                                                    <a href="index.php?url=jenis_form&idedit=<?= $row['id'];?>" class="btn btn-sm btn-warning">
+                                                        Ubah
+                                                    </a>
+                                                </form>
+                                            </td>
                                         </tr>
                                         <?php
                                         $no ++;

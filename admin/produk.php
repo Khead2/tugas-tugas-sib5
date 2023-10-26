@@ -38,7 +38,7 @@ $data_produk = $model->dataProduk();
                                             <th>Stok</th>
                                             <th>Minimal Stok</th>
                                             <th>Jenis Produk</th>
-                                            <th>aAksi</th>
+                                            <th>Aksi</th>
                                             
                                         </tr>
                                     </thead>
@@ -72,10 +72,16 @@ $data_produk = $model->dataProduk();
                                             <td><?= $produk['min_stok']?></td>
                                             <td><?= $produk['jenis']?></td>
                                             <td>
-                                                <form action="">
+                                                <form action="produk_controller.php" method ="POST">
                                                     <a href="index.php?url=produk_detail&id=<?= $produk['id']?>">
                                                         <button type="button" class="btn btn-info btn-sm">Details</button>
                                                     </a>
+                                                    <a href="index.php?url=produk_form&idedit=<?= $produk['id']?>">
+                                                        <button type="button" class="btn btn-warning btn-sm">Ubah</button>
+                                                    </a>
+                                                    <button type="submit" class="btn btn-danger dtn-sm" name="proses" value="hapus" 
+                                                    onclick="return confirm('anda yakin akan menghapus')">Hapus</button>
+                                                    <input type="hidden" name="idx" id="" value="<?= $produk['id']?>">
                                                 </form>
                                             </td>
                                           

@@ -1,6 +1,13 @@
 <?php
 $objenis = new Jenis_produk();
 $rs = $objenis->dataJenis();
+$idedit = $_REQUEST ['idedit'];
+$objJenis = new Jenis_produk();
+if(!empty($idedit)){
+  $row = $objJenis->getJenis($idedit);
+}else {
+  $row = array();
+}
 ?>
 
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"> 
@@ -11,12 +18,23 @@ $rs = $objenis->dataJenis();
   <div class="form-group row">
     <label for="text1" class="col-4 col-form-label">Nama</label> 
     <div class="col-8">
-      <input id="text1" name="nama" type="text" class="form-control">
+      <input id="text1" name="nama" type="text" class="form-control"
+      value="<?= $row['nama']?>">
     </div>
   </div> 
   <div class="form-group row">
     <div class="offset-4 col-8">
-      <button name="proses" value= "simpan" type="submit" class="btn btn-primary">Submit</button>
+
+      <?php
+
+      if(empty($idedit)){ ?>
+       <button name="proses" value= "simpan" type="submit" class="btn btn-primary">Submit</button>
+      <?php } else{
+        ?>
+        <button type="submit" name="proses" value="ubah" class="btn btn-warning">Ubah</button>
+      <?php } ?>
+      
+      <input type="hidden" name="idx" value="<?= $idedit;?>">
     </div>
   </div>
 </form>
