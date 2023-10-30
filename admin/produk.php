@@ -1,9 +1,15 @@
 <?php
+// session_start();
 $model = new Produk();
 $data_produk = $model->dataProduk();
 
+// $member = $_SESSION['MEMBER'];
+// if(isset($member)){
 
+
+ 
 ?>
+
 
 
 <main>
@@ -76,12 +82,18 @@ $data_produk = $model->dataProduk();
                                                     <a href="index.php?url=produk_detail&id=<?= $produk['id']?>">
                                                         <button type="button" class="btn btn-info btn-sm">Details</button>
                                                     </a>
+                                                    <?php
+                                                    if ($sesi['role'] != 'staff'){
+                                                    ?>
+                                                    
                                                     <a href="index.php?url=produk_form&idedit=<?= $produk['id']?>">
                                                         <button type="button" class="btn btn-warning btn-sm">Ubah</button>
                                                     </a>
                                                     <button type="submit" class="btn btn-danger dtn-sm" name="proses" value="hapus" 
                                                     onclick="return confirm('anda yakin akan menghapus')">Hapus</button>
                                                     <input type="hidden" name="idx" id="" value="<?= $produk['id']?>">
+                                                    <?php }
+                                                    ?>
                                                 </form>
                                             </td>
                                           
@@ -97,3 +109,11 @@ $data_produk = $model->dataProduk();
                         </div>
                     </div>
                 </main>
+                <?php 
+                // else{
+                //     echo '<script> alert("anda tidak boleh masuk");history.back();</script>';
+                // }
+
+                ?>
+
+                                   

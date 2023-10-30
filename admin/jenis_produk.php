@@ -5,7 +5,12 @@ $data_jenisProduk = $model->datajenis();
 
 ?>
 
+<?php 
 
+if($sesi['role'] != 'staff'){
+
+
+?>
 <main>
                     <div class="container-fluid px-4">
                         <h1 class="mt-4">Tables</h1>
@@ -72,3 +77,8 @@ $data_jenisProduk = $model->datajenis();
                         </div>
                     </div>
                 </main>
+                <?php
+}  else { ?>
+            <h1 align="center">Halaman Kosong</h1>
+    <?php }
+?>
