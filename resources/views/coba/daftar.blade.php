@@ -1,11 +1,11 @@
 @php
 
 $no = 1;
- $s1 = ['nama' => 'Fawaz', 'nilai' => 85];
- $s2 = ['nama' => 'Aji', 'nilai' => 95];
- $s3 = ['nama' => 'Ari', 'nilai' => 75];
- $s4 = ['nama' => 'Andi', 'nilai' => 65];
- $s5 = ['nama' => 'Aji', 'nilai' => 55];
+$s1 = ['nama' => 'Fawaz', 'nilai' => 85];
+$s2 = ['nama' => 'Aji', 'nilai' => 95];
+$s3 = ['nama' => 'Ari', 'nilai' => 75];
+$s4 = ['nama' => 'Andi', 'nilai' => 65];
+$s5 = ['nama' => 'Aji', 'nilai' => 55];
 
 $judul = ['No', 'Nama', 'Nilai', 'Keterangan'];
 
@@ -25,7 +25,7 @@ $judul = ['No', 'Nama', 'Nilai', 'Keterangan'];
         <tr>
             @foreach($siswa as $s)
             @php
-            $ket = ($s['nilai'] => 60) ? 'Lulus' : 'Gagal';
+            $ket = ($s['nilai'] >= 60) ? 'Lulus' : 'Gagal';
             @endphp
             <td>{{$no++}}</td>
             <td>{{$s['nama']}}</td>
