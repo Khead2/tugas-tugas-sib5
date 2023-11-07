@@ -16,6 +16,6 @@ class Produk extends Model
 
     //relasi one to many ke table yang berhubungan denga produk
     public function jenis_produk(){
-        return $this->belongTo(Jenis_produk::class);
+        return $this->belongsTo(Jenis_produk::class);
     }
 }
