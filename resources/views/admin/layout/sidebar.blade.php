@@ -68,7 +68,7 @@
                         <h6 class="collapse-header">Kumpulan data</h6>
                         <a class="collapse-item" href="{{url('admin/produk')}}">Data produk</a>
                         <a class="collapse-item" href="{{route('pelanggan.index')}}">Data Plenggan</a>
-                        <a class="collapse-item" href="cards.html">Data jenis produk</a>
+                        <a class="collapse-item" href="{{url('admin/jenis_produk')}}">Data jenis produk</a>
                         <a class="collapse-item" href="{{route('kartu.index')}}">Data Kartu</a>
                     </div>
                 </div>
