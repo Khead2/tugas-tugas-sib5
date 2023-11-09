@@ -35,6 +35,7 @@ class KartuController extends Controller
     public function store(Request $request)
     {
         //
+        
     }
 
     /**
@@ -43,6 +44,11 @@ class KartuController extends Controller
     public function show(string $id)
     {
         //
+        $kartu = DB::table('kartu')
+        ->where('id', $id)
+        ->get();
+
+        return view ('admin.kartu.detail', compact('kartu'));
     }
 
     /**
@@ -66,6 +72,7 @@ class KartuController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        DB::table('kartu')-> where('id', $id)->delete();
+        return redirect('admin/kartu');
     }
 }

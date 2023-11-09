@@ -52,16 +52,26 @@ Route::get('/dashboard',[DashboardController::class, 'index']);
 //contih pemanggilan secara satu persatu function menggunkan get, put,update, delete
 Route::get('/notfound',[PagenotController::class,'index']);
 //memanggil seluruh fungsi atau function
-Route::resource('kartu', KartuController::class);
+Route::get('/kartu', [KartuController::class, 'index']);
+Route::get('/kartu/show/{id}', [KartuController::class, 'show']);
+Route::get('/kartu/delete/{id}', [KartuController::class, 'destroy']);
+
 
 //memanggil fungi atau satu persatu
 Route::get('/jenis_produk', [JenisProdukController::class, 'index']);
 Route::get('/jenis_produk/create', [JenisProdukController::class, 'create']);
 Route::post('/jenis_produk/store', [JenisProdukController::class, 'store']);
+Route::get('/jenis_produk/edit/{id}', [JenisProdukController::class, 'edit']);
+Route::post('/jenis_produk/update/{id}', [JenisProdukController::class, 'update']);
 
 Route::get('/produk',[ProdukController::class, 'index']);
 Route::get('/produk/create', [ProdukController::class, 'create']);
 Route::post('/produk/store', [ProdukController::class, 'store']);
+Route::get('/produk/show/{id}', [ProdukController::class, 'show']);
+Route::get('/produk/edit/{id}', [ProdukController::class, 'edit']);
+Route::post('/produk/update/{id}', [ProdukController::class, 'update']);
+Route::get('/produk/delete/{id}', [ProdukController::class, 'destroy']);
+
 
 Route::resource('/pelanggan', PelangganController::class);
 });

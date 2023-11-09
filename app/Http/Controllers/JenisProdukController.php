@@ -52,6 +52,8 @@ class JenisProdukController extends Controller
     public function edit(string $id)
     {
         //
+        $jenis_produk = Jenis_produk::all()->where('id',$id);
+        return view('admin.jenis.edit', compact('jenis_produk'));
     }
 
     /**
@@ -60,6 +62,10 @@ class JenisProdukController extends Controller
     public function update(Request $request, string $id)
     {
         //
+        $jenis_produk = Jenis_produk::find($request->id);
+        $jenis_produk->nama = $request->nama;
+        $jenis_produk->save();
+        return redirect('admin/jenis_produk');
     }
 
     /**

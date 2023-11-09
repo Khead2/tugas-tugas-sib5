@@ -40,7 +40,9 @@
                                         <tr>
                                             <td>{{ $no++ }}</td>
                                             <td>{{$jenis->nama}}</td>
-                                            <td>ubah</td>
+                                            <td>
+                                                <a href="{{url('admin/jenis_produk/edit/'.$jenis->id)}}" class="btn btn-sm btn-warning">ubah</a>
+                                            </td>
                                            
                                             
                                         </tr>

@@ -69,7 +69,7 @@
                         <a class="collapse-item" href="{{url('admin/produk')}}">Data produk</a>
                         <a class="collapse-item" href="{{route('pelanggan.index')}}">Data Plenggan</a>
                         <a class="collapse-item" href="{{url('admin/jenis_produk')}}">Data jenis produk</a>
-                        <a class="collapse-item" href="{{route('kartu.index')}}">Data Kartu</a>
+                        <a class="collapse-item" href="{{url('admin/kartu')}}">Data Kartu</a>
                     </div>
                 </div>
             </li>
