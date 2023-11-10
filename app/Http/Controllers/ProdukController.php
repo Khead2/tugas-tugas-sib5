@@ -37,6 +37,13 @@ class ProdukController extends Controller
      */
     public function store(Request $request)
     {
+        //porses upload foto
+        if(!empty($request->foto)){
+            $fileName = 'foto-'.$request->id.'.'.$request->foto->extension();
+            $request->foto->move(public_path('admin/img'), $fileName);
+        }else{
+            $fileName = '';
+        }
         //tambah data menggunakan query builder
         DB::table('produk')->insert([
             'kode'=>$request->kode,
@@ -45,6 +52,8 @@ class ProdukController extends Controller
             'harga_jual'=>$request->harga_jual,
             'stok'=>$request->stok,
             'min_stok'=>$request->min_stok,
+            'foto'=>$fileName,
+            'deskripsi'=>$request->deskripsi,
             'jenis_produk_id'=>$request->jenis_produk_id,
         ]);
         return redirect('admin/produk');
@@ -79,7 +88,20 @@ class ProdukController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        //update foto
+        $foto = DB::table('produk')->select('foto')->where('id', $request->id)->get();
+        foreach ($foto as $f){
+            $namaFileLama = $f->foto;
+        }
+        if(!empty($request->foto)){
+            //jika ada foto lama maka hous fotonya
+            if(!empty($namaFileLama->foto)) unlink('admin/img'.$namaFileLama->foto);
+            //proses ganti foto
+            $fileName = 'foto-'.$request->id.'.'.$request->foto->extension();
+            $request->foto->move(public_path('admin/img'), $fileName);
+        } else{
+            $fileName = ' ';
+        }
         DB::table('produk')->where('id',$request->id)->update([
             'kode'=>$request->kode,
             'nama'=>$request->nama,
@@ -87,6 +109,8 @@ class ProdukController extends Controller
             'harga_jual'=>$request->harga_jual,
             'stok'=>$request->stok,
             'min_stok'=>$request->min_stok,
+            'foto'=>$fileName,
+            'deskripsi'=>$request->deskripsi,
             'jenis_produk_id'=>$request->jenis_produk_id,
         ]);
         return redirect('admin/produk');
