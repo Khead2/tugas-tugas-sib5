@@ -110,7 +110,7 @@
                             </div>
 
                             <!-- Bar Chart -->
-                            <
+                            
                         </div>
 
                         <!-- Donut Chart -->

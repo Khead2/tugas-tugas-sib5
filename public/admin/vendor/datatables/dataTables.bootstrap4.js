@@ -179,6 +179,13 @@ DataTable.ext.renderer.pageButton.bootstrap = function ( settings, host, idx, bu
 	}
 };
 
-
+$(document).ready(function() {
+    $('#example').DataTable( {
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ]
+    } );
+} );
 return DataTable;
 }));

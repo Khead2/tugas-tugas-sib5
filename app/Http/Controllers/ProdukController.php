@@ -6,7 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Produk;
 use App\Models\Jenis_produk;
 use Illuminate\Support\Facades\DB;
-
+use RealRashid\SweetAlert\Facades\Alert;
+use PDF;
 class ProdukController extends Controller
 {
     /**
@@ -85,7 +86,9 @@ class ProdukController extends Controller
             'deskripsi'=>$request->deskripsi,
             'jenis_produk_id'=>$request->jenis_produk_id,
         ]);
-        return redirect('admin/produk');
+        // Alert::success('Success', 'Berhasil menambahkan Produk');
+
+        return redirect('admin/produk')->with('success', 'Task Created Successfully!');;
     }
 
     /**
@@ -117,7 +120,9 @@ class ProdukController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        try {
 
+        
         $request ->validate([
          
             'nama' => 'required | max:45',
@@ -167,7 +172,12 @@ class ProdukController extends Controller
             'deskripsi'=>$request->deskripsi,
             'jenis_produk_id'=>$request->jenis_produk_id,
         ]);
-        return redirect('admin/produk');
+        return redirect('admin/produk')->with('success', 'Task Created Successfully!');
+        // Alert::success('Success', 'Berhasil mengupdate Produk');
+    }catch (\Exeption $e){
+    //     Alert::error('Success', 'Berhasil mengupdate Produk');
+    //     return redirect('admin/produk');
+    }
     }
 
     /**
@@ -177,6 +187,33 @@ class ProdukController extends Controller
     {
         //
         DB::table('produk')-> where('id', $id)->delete();
-        return redirect('admin/produk');
+        // Alert::error('Success', 'Berhasil menambahkan Produk');
+        return redirect('admin/produk')->withSuccess('Berhasil Menghapus Data Produk!');
+    }
+
+    public function generatePDF(){
+        $data =[
+            'title' => 'Welcome to export PDF',
+            'data' => ('m/d/y')
+        ];
+        $pdf = PDF::loadview('admin.produk.myPDF', $data);
+        return $pdf->download('testdownload.pdf');
+    }
+    public function produkPDF(){
+        $produk = Produk::join('jenis_produk', 'jenis_produk_id','=','jenis_produk.id')
+        ->select('produk.*', 'jenis_produk.nama as jenis')
+        ->get();
+        $pdf = PDF::loadview('admin.produk.produkPDF', ['produk'=>$produk])->setPaper('a4','landscape');
+        return $pdf->stream();
+    }
+
+    public function produkPDF_show(string $id){
+        $produk = Produk::join('jenis_produk', 'jenis_produk_id','=','jenis_produk.id')
+        ->select('produk.*', 'jenis_produk.nama as jenis')
+        ->where('produk.id', $id)
+        ->get();
+        $pdf = PDF::loadview('admin.produk.produkPDF_show',['produk'=>$produk]);
+        return $pdf->stream();
     }
 }
+
