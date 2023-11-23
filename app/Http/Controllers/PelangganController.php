@@ -72,10 +72,10 @@ class PelangganController extends Controller
     public function edit(string $id)
     {
         //
-        $pelanggan = Pelanggan::find($id);
+        $pl = Pelanggan::find($id);
         $kartu = Kartu::all();
         $gender = ['L','P'];
-        return view ('admin.pelanggan.create', compact('kartu', 'gender','pelanggan'));
+        return view ('admin.pelanggan.edit', compact('pl', 'kartu','gender'));
        
     }
 
@@ -84,7 +84,7 @@ class PelangganController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $pelanggan = Pelanggan::find($request->id);
+        $pelanggan = Pelanggan::find($id);
         $pelanggan->kode = $request->kode;
         $pelanggan->nama = $request->nama;
         $pelanggan->jk = $request->jk;

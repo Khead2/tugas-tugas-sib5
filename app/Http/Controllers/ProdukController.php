@@ -8,6 +8,9 @@ use App\Models\Jenis_produk;
 use Illuminate\Support\Facades\DB;
 use RealRashid\SweetAlert\Facades\Alert;
 use PDF;
+use App\Exports\ProdukExport;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Imports\ProdukImport;
 class ProdukController extends Controller
 {
     /**
@@ -214,6 +217,17 @@ class ProdukController extends Controller
         ->get();
         $pdf = PDF::loadview('admin.produk.produkPDF_show',['produk'=>$produk]);
         return $pdf->stream();
+    }
+
+    public function exportProduk(){
+        return Excel::download(new ProdukExport, 'produk.xlsx');
+    }
+
+    public function importProduk(Request $request) 
+    {
+        Excel::import(new ProdukImport,$request->file('file')->store('temp'));
+        
+        return redirect('admin/produk')->with('success', 'Produk Berhasil diimport!');
     }
 }
 
