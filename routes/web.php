@@ -8,6 +8,9 @@ use App\Http\Controllers\KartuController;
 use App\Http\Controllers\JenisProdukController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\PelangganController;
+use App\Http\Controllers\BerandaController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\ShopController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,9 +23,17 @@ use App\Http\Controllers\PelangganController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::get('/', [BerandaController::class, 'index']);
+Route::get('/shop', [ShopController::class, 'index']);
+Route::get('/shop', [ShopController::class, 'index']);
+Route::get('/cart', [ShopController::class, 'cart'])->name('cart');
+Route::get('add-to-cart/{id}', [ShopController::class, 'addToCart'])->name('add.to.cart');
+Route::patch('update-cart', [ShopController::class, 'update'])->name('update.cart');
+Route::delete('remove-from-cart', [ShopController::class, 'remove'])->name('remove.from.cart');
 
 Route::get('/salam',function(){
     return "Assalamualaikum selamat belajar Laravel";
@@ -45,8 +56,11 @@ Route::get('/daftarnilai',function(){
     return view('coba.daftar');
 });
 
-Route::get('/datamahasiswa',[LihatNilaiController::class, 'dataMahasiswa']);
 
+
+
+Route::get('/datamahasiswa',[LihatNilaiController::class, 'dataMahasiswa']);
+Route::group(['middleware' => ['auth','peran:admin-manager-staff']], function(){
 Route::prefix('admin')->group(function(){
 Route::get('/dashboard',[DashboardController::class, 'index']);
 //contih pemanggilan secara satu persatu function menggunkan get, put,update, delete
@@ -78,7 +92,12 @@ Route::get('/produk/export/', [ProdukController::class, 'exportProduk']);
 Route::post('/produk/import/', [ProdukController::class, 'importProduk']);
 
 Route::resource('pelanggan', PelangganController::class);
+Route::get('/user',[UserController::class, 'index']);
+Route::get('/profile', [UserController::class, 'show']);
+Route::patch('/profile/{id}', [UserController::class, 'update']); 
+});
 });
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+

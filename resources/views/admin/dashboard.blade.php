@@ -1,6 +1,7 @@
 @extends('admin.layout.appadmin')
 @section('content')
 
+
 <div class="row">
 
                         <!-- Earnings (Monthly) Card Example -->

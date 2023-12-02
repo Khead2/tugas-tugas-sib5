@@ -1,6 +1,6 @@
 @extends('admin.layout.appadmin')
 @section('content')
-@if(Auth::user()->role != 'staff')
+@if(Auth::user()->role == 'admin')
 <h1>Tes Index Kartu</h1>
 <h1 class="h3 mb-2 text-gray-800">Tables</h1>
                     <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
@@ -18,63 +18,34 @@
                                     <thead>
                                         <tr>
                                             <th>No</th>
-                                            <th>Kode</th>
                                             <th>Nama</th>
-                                            <th>Diskon</th>
-                                            <th>Iuran</th>
-                                            <td>Action</td>
+                                            <th>Email</th>
+                                            <th>Role</th>
+                                            <th>Foto</th>
+                                          
                                             
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                            <th>No</th>
-                                            <th>Kode</th>
+                                        <th>No</th>
                                             <th>Nama</th>
-                                            <th>Diskon</th>
-                                            <th>Iuran</th>
-                                            <td>Action</td>
+                                            <th>Email</th>
+                                            <th>Role</th>
+                                            <th>Foto</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
                                         @php $no = 1 @endphp
-                                        @foreach ($kartu as $k)
+                                        @foreach ($user as $user)
                                         
                                         <tr>
                                             <td>{{ $no++ }}</td>
-                                            <td>{{$k->kode}}</td>
-                                            <td>{{$k->nama}}</td>
-                                            <td>{{$k->diskon}}</td>
-                                            <td>{{$k->iuran}}</td>
-                                            <td>
-                                                <a href="{{url('admin/kartu/show/'.$k->id)}}">Detail</a>
-
-                                                                                                <!-- Button trigger modal -->
-<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal{{$k->id}}">
-<i class="fas fa-trash"></i>
-</button>
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModal{{$k->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        Apakah anda yakin akan menghaspus data {{$k->nama}} ?
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <a href="{{url('admin/kartu/delete/'.$k->id)}}"><button type="button" class="btn btn-danger">Delete</button></a>
-      </div>
-    </div>
-  </div>
-</div>
-                                            </td>
+                                            <td>{{$user->name}}</td>
+                                            <td>{{$user->email}}</td>
+                                            <td>{{$user->role}}</td>
+                                            <td>{{$user->foto}}</td>
+                                            
                                             
                                         </tr>
                                         
@@ -92,4 +63,7 @@
 @else
 @include('admin.pagenot')
 @endif
+
+
+
 @endsection
