@@ -229,5 +229,30 @@ class ProdukController extends Controller
         
         return redirect('admin/produk')->with('success', 'Produk Berhasil diimport!');
     }
+    public function apiProduk(){
+        $produk = Produk::all();
+        return response()->json([
+            'success'=>true,
+            'message'=>'Data Produk',
+            'data' => $produk
+        ],200
+    );
+    }
+    public function apiProdukDetail($id){
+        $produk = Produk::find($id);
+        if($produk){
+            return response()->json([
+                'success' => true,
+                'message' => 'Detail Produk',
+                'Data' => $produk
+            ],200);
+        }
+        else{
+            return response()->json([
+                'success' => false,
+                'message' => 'Detail Produk Tidak ditemukan'
+            ],400);
+        }
+    }
 }
 

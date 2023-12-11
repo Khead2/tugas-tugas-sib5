@@ -99,7 +99,7 @@
 									@empty($details['foto'])
                                     <img src="{{ url('admin/img/nophoto.jpg') }}" />
 									@else 
-									<img src="{{ url('admin/img') }}/ {{$details['foto']}}" />
+									<img src="{{url('admin/img')}}/{{$details['foto']}}" />
 									@endempty
 
                                 </div>
@@ -242,7 +242,8 @@
 			</div>
 		</footer>
 		<!-- End Footer Section -->	
-
+		
+		
 
 		<script src="{{asset('front/js/bootstrap.bundle.min.js')}}"></script>
 		<script src="{{asset('front/js/tiny-slider.js')}}"></script>
